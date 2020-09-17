@@ -5,13 +5,16 @@ package by.kirich1409.viewbindingdelegate
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 
 private class FragmentViewBindingProperty<F : Fragment, T : ViewBinding>(
     viewBinder: (F) -> T
 ) : ViewBindingProperty<F, T>(viewBinder) {
 
-    override fun getLifecycleOwner(thisRef: F) = thisRef.viewLifecycleOwner
+    override fun getLifecycleOwner(thisRef: F): LifecycleOwner {
+        return thisRef.viewLifecycleOwner
+    }
 }
 
 /**

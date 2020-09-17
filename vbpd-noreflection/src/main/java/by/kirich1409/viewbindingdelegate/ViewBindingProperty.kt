@@ -20,6 +20,7 @@ public abstract class ViewBindingProperty<in R : Any, T : ViewBinding>(
     private val lifecycleObserver = ClearOnDestroyLifecycleObserver()
     private var thisRef: R? = null
 
+    @Throws(IllegalStateException::class)
     protected abstract fun getLifecycleOwner(thisRef: R): LifecycleOwner
 
     @MainThread
